@@ -1,0 +1,82 @@
+.loading {
+	&-wrapper {
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&:before {
+			content: '';
+			position: absolute;
+			z-index: 2;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			background: rgba(25, 25, 25, 0.7);
+		}
+
+		&.is-loaded {
+			.loading {
+				img {
+					width: 50px !important;
+				}
+			}
+		}
+	}
+
+	&-content {
+		position: relative;
+		z-index: 4;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&-close {
+		position: absolute;
+		top: 115px;
+		right: 15px;
+		z-index: 3;
+		color: rgb(255, 255, 255);
+		background: rgb(78, 78, 78);
+		border-radius: 30px;
+		padding: 6px 10px;
+		font-size: 20px;
+
+		&:hover {
+			color: #fff;
+		}
+	}
+
+	background: #fff;
+	padding: 15px;
+	border-radius: 4px;
+	box-shadow: 0 5px 10px rgba(25, 25, 25, 0.3);
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease-in-out;
+
+	img {
+		width: 25px;
+	}
+
+	h4 {
+		padding: 0;
+		margin: 15px 0 0 0;
+		color: #007600;
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 1.255;
+		text-rendering: optimizeLegibility;
+		font-family: 'Amazon Ember', Arial, sans-serif;
+	}
+}
