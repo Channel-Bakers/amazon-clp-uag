@@ -2,7 +2,7 @@
 
 import env from '../../../../env';
 import {isObjectEmpty} from '../helpers/object';
-import image2base64 from '../helpers/image2base64';
+// import image2base64 from '../helpers/image2base64';
 
 export default class Dropdown {
 	constructor(params) {
@@ -270,6 +270,7 @@ export default class Dropdown {
 			// });
 		// });
 
+		IMAGE_WRAPPER.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/img/bundle-image-bg.jpg')`;
 		IMAGE.style.backgroundImage = `url('${this.activeOption.image}')`;
 		this.elements.image = IMAGE;
 

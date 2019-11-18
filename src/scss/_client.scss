@@ -7,8 +7,8 @@
     font-display: swap;
     unicode-range: U+000-5FF;
 	src: local('dare'),
-		url('../../assets/fonts/Dare.ttf') format('truetype');
-        //  url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/fonts/Dare.ttf') format('truetype');
+		// url('../../assets/fonts/Dare.ttf') format('truetype');
+         url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/fonts/Dare.ttf') format('truetype');
 }
 
 @font-face {
@@ -18,8 +18,8 @@
     font-display: swap;
     unicode-range: U+000-5FF;
 	src: local('goldsmith-black'),
-		url('../../assets/fonts/Goldsmith-Black.otf') format('opentype');
-        //  url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/fonts/Goldsmith-Black.otf') format('opentype');
+		// url('../../assets/fonts/Goldsmith-Black.otf') format('opentype');
+         url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/fonts/Goldsmith-Black.otf') format('opentype');
 }
 
 body {
@@ -27,7 +27,7 @@ body {
 }
 
 .bundle-wrapper {
-	background-image: url('../../assets/img/bundle-bg.jpg');
+	// background-image: url('../../assets/img/bundle-bg.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -38,7 +38,7 @@ body {
 	padding: 0 0 60px;
 
 	&-top {
-		background-image: url('../../assets/img/bundle-top-bg.jpg');
+		// background-image: url('../../assets/img/bundle-top-bg.jpg');
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -62,7 +62,7 @@ CLIENT_PREFIX {
 		-webkit-font-smoothing: antialiased;
 		text-rendering: optimizeLegibility;
 
-		background-image: url('../../assets/img/bundle-card-bg.jpg');
+		// background-image: url('../../assets/img/bundle-card-bg.jpg');
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -91,7 +91,7 @@ CLIENT_PREFIX {
 			background-size: contain;
 			background-position: center;
 			background-repeat: no-repeat;
-			background-image: url('../../assets/img/bundle-image-bg.png');
+			// background-image: url('../../assets/img/bundle-image-bg.png');
 		}
 	}
 
