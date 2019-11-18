@@ -26,7 +26,7 @@ body {
 	margin: 0;
 }
 
-.ad-landing-page-wrap .bundle-wrapper {
+.bundle-wrapper {
 	// background-image: url('../../assets/img/bundle-bg.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
@@ -137,6 +137,7 @@ CLIENT_PREFIX {
 
 				h6 {
 					font-size: 1rem;
+					margin-top: -16px;
 				}
 
 				span {

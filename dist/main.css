@@ -17,7 +17,7 @@
 body {
   margin: 0; }
 
-.ad-landing-page-wrap .bundle-wrapper {
+.bundle-wrapper {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -32,7 +32,7 @@ body {
   padding: 0 0 60px;
   max-width: 1500px;
   margin: auto; }
-  .ad-landing-page-wrap .bundle-wrapper-top {
+  .bundle-wrapper-top {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -121,7 +121,8 @@ body {
       font-size: 4rem;
       font-family: 'goldsmith-black'; }
     .uag-bundle-header-title h6 {
-      font-size: 1rem; }
+      font-size: 1rem;
+      margin-top: -16px; }
     .uag-bundle-header-title span {
       font-family: 'dare'; }
       .uag-bundle-header-title span:not(.symbol) {
