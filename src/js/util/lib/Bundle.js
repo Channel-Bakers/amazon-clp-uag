@@ -1,10 +1,7 @@
 'use strict';
 
 import Dropdown from './Dropdown';
-import {isObjectEmpty} from '../helpers/object';
 import env from '../../../../env';
-import {strToNumber, capitalize} from '../helpers/string';
-import {numToCurrency} from '../helpers/number';
 import {getCookie} from '../helpers/cookies';
 
 export default class Builder {
@@ -127,7 +124,7 @@ export default class Builder {
 			try {
 				this.elements.wrapper.appendChild(DROPDOWN.html);
 
-				if (++index === this.params.dropdowns.length -1) {
+				if (++index === this.params.dropdowns.length - 1) {
 					const PLUS = document.createElement('div');
 					const PLUS_ICON = document.createElement('img');
 
@@ -364,9 +361,19 @@ export default class Builder {
 			`[data-bundle-target="${this.params.target}"]`
 		);
 
+		const PARENT_WRAPPER = WRAPPER.closest('.bundle-wrapper');
+		// PARENT_WRAPPER.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/img/bundle-bg.jpg')`;
+
+		// if (PARENT_WRAPPER.querySelector('.bundle-wrapper-top')) {
+		// 	PARENT_WRAPPER.querySelector(
+		// 		'.bundle-wrapper-top'
+			// ).style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/img/bundle-top-bg.jpg')`;
+		// }
+
 		if (!WRAPPER || WRAPPER.innerHTML !== '') return;
 
 		WRAPPER.classList.add(`${env.clientPrefix}-container`);
+		// WRAPPER.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/img/bundle-card-bg.jpg')`;
 
 		// if (this.params.background) {
 		// 	WRAPPER.style.backgroundImage = this.params.background;
@@ -376,7 +383,7 @@ export default class Builder {
 
 		const HEADER = document.createElement('div');
 		HEADER.classList.add(`${env.clientPrefix}-bundle-header`);
-		
+
 		const HEADER_IMAGE = document.createElement('div');
 		HEADER_IMAGE.classList.add(`${env.clientPrefix}-bundle-header-image`);
 		HEADER_IMAGE.style.backgroundImage = `url('../../assets/img/${this.params.target}-header.jpg')`;
@@ -384,7 +391,9 @@ export default class Builder {
 		const HEADER_TITLE = document.createElement('div');
 		HEADER_TITLE.classList.add(`${env.clientPrefix}-bundle-header-title`);
 		HEADER_TITLE.innerHTML = `
-			<h2>${this.params.discount.amount} <span>off</span></h2>
+			<h2>${this.params.discount.symbol === '$'
+					? `<span class="symbol">$</span>${this.params.discount.amount} <span>off</span>`
+					: `${this.params.discount.amount}<span class="symbol">%</span> <span>off</span>`}</h2>
 			<h6>${this.params.discount.product}</h6>
 		`;
 

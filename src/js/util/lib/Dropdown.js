@@ -1,14 +1,8 @@
 'use strict';
 
 import env from '../../../../env';
-import {
-	isObjectEmpty,
-	uniqueObjectValues,
-	serializeObject,
-} from '../helpers/object';
-import {numToCurrency} from '../helpers/number';
-import {capitalize} from '../helpers/string';
-import {getCookie} from '../helpers/cookies';
+import {isObjectEmpty} from '../helpers/object';
+import image2base64 from '../helpers/image2base64';
 
 export default class Dropdown {
 	constructor(params) {
@@ -227,6 +221,54 @@ export default class Dropdown {
 
 		const IMAGE = document.createElement('div');
 		IMAGE.classList.add(`${env.clientPrefix}-image`);
+
+		// const SRC_URL = this.activeOption.image;
+
+		// image2base64(SRC_URL, function(base64) {
+		// 	IMAGE.style.backgroundImage = base64;
+			// const image = new Image();
+			// image.src = base64;
+
+			// image.onload = function() {
+			// 	const canvas = document.createElement('canvas');
+			// 	canvas.width = this.naturalWidth;
+			// 	canvas.height = this.naturalHeight;
+
+			// 	canvas.getContext('2d').drawImage(this, 0, 0);
+
+			// 	callback(canvas.toDataURL('image/jpg'));
+			// 	console.log(image.naturalHeight, image.naturalWidth);
+			// }
+
+			// $('#original').on('load', function() {
+			// 	var canvas = document.getElementById('modified'),
+			// 		ctx = canvas.getContext('2d'),
+
+			// 	canvas.height = image.height;
+			// 	canvas.width = image.width;
+			// 	ctx.drawImage(image, 0, 0);
+
+			// 	var imgd = ctx.getImageData(0, 0, image.height, image.width),
+			// 		pix = imgd.data,
+			// 		newColor = {r: 0, g: 0, b: 0, a: 0};
+
+			// 	for (var i = 0, n = pix.length; i < n; i += 4) {
+			// 		var r = pix[i],
+			// 			g = pix[i + 1],
+			// 			b = pix[i + 2];
+
+			// 		if (r >= 230 && g >= 230 && b >= 230) {
+			// 			// Change the white to the new color.
+			// 			pix[i] = newColor.r;
+			// 			pix[i + 1] = newColor.g;
+			// 			pix[i + 2] = newColor.b;
+			// 			pix[i + 3] = newColor.a;
+			// 		}
+			// 	}
+
+			// 	IMAGE.style.backgroundImage = canvas.toDataURL('image/jpg');
+			// });
+		// });
 
 		IMAGE.style.backgroundImage = `url('${this.activeOption.image}')`;
 		this.elements.image = IMAGE;

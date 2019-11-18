@@ -24,8 +24,7 @@ export default {
 				},
 			],
 			discount: {
-				symbol: '$',
-				amount: '10',
+				amount: '$10',
 				product: 'Apple Watch Case',
 			},
 		};

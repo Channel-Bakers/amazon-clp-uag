@@ -6,8 +6,20 @@
     font-weight: 500;
     font-display: swap;
     unicode-range: U+000-5FF;
-    src: local('dare'),
-         url('../../assets/fonts/dare.ttf') format('truetype');
+	src: local('dare'),
+		url('../../assets/fonts/Dare.ttf') format('truetype');
+        //  url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/fonts/Dare.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'goldsmith-black';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    unicode-range: U+000-5FF;
+	src: local('goldsmith-black'),
+		url('../../assets/fonts/Goldsmith-Black.otf') format('opentype');
+        //  url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/fonts/Goldsmith-Black.otf') format('opentype');
 }
 
 body {
@@ -76,6 +88,10 @@ CLIENT_PREFIX {
 			position: relative;
 			height: 150px;
 			margin-bottom: 20px;
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-image: url('../../assets/img/bundle-image-bg.png');
 		}
 	}
 
@@ -90,7 +106,7 @@ CLIENT_PREFIX {
 			display: flex;
 			justify-content: space-between;
 			align-items: flex-start;
-			height: 60px;
+			height: 80px;
 
 			&-image {
 				background-position: center;
@@ -112,8 +128,9 @@ CLIENT_PREFIX {
 					margin: 0;
 				}
 
-				h2 {
-					font-size: 3rem;
+				h2:not(span) {
+					font-size: 4rem;
+					font-family: 'goldsmith-black';
 				}
 
 				h6 {
@@ -121,8 +138,12 @@ CLIENT_PREFIX {
 				}
 
 				span {
-					font-size: 1rem;
-					margin-left: -16px;
+					font-family: 'dare';
+
+					&:not(.symbol) {
+						font-size: 1rem;
+						margin-left: -16px;
+					}
 				}
 			}
 		}
