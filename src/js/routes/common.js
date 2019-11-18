@@ -17,4 +17,6 @@ export default {
 			NODES && removeAmazonNodes(NODES);
 		});
 	},
+
+	finalize() {}
 };

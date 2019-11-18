@@ -270,7 +270,7 @@ export default class Dropdown {
 			// });
 		// });
 
-		IMAGE_WRAPPER.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/img/bundle-image-bg.jpg')`;
+		IMAGE_WRAPPER.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/img/bundle-image-bg.png')`;
 		IMAGE.style.backgroundImage = `url('${this.activeOption.image}')`;
 		this.elements.image = IMAGE;
 

@@ -129,7 +129,7 @@ export default class Builder {
 					const PLUS_ICON = document.createElement('img');
 
 					PLUS.classList.add(`${env.clientPrefix}-bundle-plus`);
-					PLUS_ICON.src = '../../../../assets/img/plus.png';
+					PLUS_ICON.src = 'https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/img/plus.png';
 
 					PLUS.appendChild(PLUS_ICON);
 					this.elements.wrapper.appendChild(PLUS);
@@ -386,7 +386,7 @@ export default class Builder {
 
 		const HEADER_IMAGE = document.createElement('div');
 		HEADER_IMAGE.classList.add(`${env.clientPrefix}-bundle-header-image`);
-		HEADER_IMAGE.style.backgroundImage = `url('../../assets/img/${this.params.target}-header.jpg')`;
+		HEADER_IMAGE.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/img/${this.params.target}-header.jpg')`;
 
 		const HEADER_TITLE = document.createElement('div');
 		HEADER_TITLE.classList.add(`${env.clientPrefix}-bundle-header-title`);
