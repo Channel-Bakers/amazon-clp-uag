@@ -4,7 +4,7 @@
   font-weight: 500;
   font-display: swap;
   unicode-range: U+000-5FF;
-  src: local("dare"), url("https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/fonts/Dare.ttf") format("truetype"); }
+  src: local("dare"), url("https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/fonts/dare.ttf") format("truetype"); }
 
 @font-face {
   font-family: 'goldsmith-black';
@@ -17,7 +17,7 @@
 body {
   margin: 0; }
 
-.bundle-wrapper {
+.ad-landing-page-wrap .bundle-wrapper {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -29,8 +29,10 @@ body {
       align-items: flex-end;
   -ms-flex-direction: column;
       flex-direction: column;
-  padding: 0 0 60px; }
-  .bundle-wrapper-top {
+  padding: 0 0 60px;
+  max-width: 1500px;
+  margin: auto; }
+  .ad-landing-page-wrap .bundle-wrapper-top {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

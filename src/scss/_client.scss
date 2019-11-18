@@ -8,7 +8,7 @@
     unicode-range: U+000-5FF;
 	src: local('dare'),
 		// url('../../assets/fonts/Dare.ttf') format('truetype');
-         url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/fonts/Dare.ttf') format('truetype');
+         url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/fonts/dare.ttf') format('truetype');
 }
 
 @font-face {
@@ -26,7 +26,7 @@ body {
 	margin: 0;
 }
 
-.bundle-wrapper {
+.ad-landing-page-wrap .bundle-wrapper {
 	// background-image: url('../../assets/img/bundle-bg.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
@@ -36,6 +36,8 @@ body {
 	align-items: flex-end;
 	flex-direction: column;
 	padding: 0 0 60px;
+	max-width: 1500px;
+	margin: auto;
 
 	&-top {
 		// background-image: url('../../assets/img/bundle-top-bg.jpg');
