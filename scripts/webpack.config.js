@@ -45,7 +45,7 @@ module.exports = {
 			resolveApp('src/js/polyfills/prepend().js'),
 			resolveApp('src/js/polyfills/remove().js'),
 			resolveApp('src/js/polyfills/forEach().js'),
-			PATHS.appMainJs
+			PATHS.appMainJs,
 		],
 	},
 	output: {
@@ -87,7 +87,10 @@ module.exports = {
 					'sass-loader',
 				],
 			},
-			{ test: /\.(jpg|png|woff|woff2|eot|ttf|svg)$/, use: ['url-loader?limit=100000'] }
+			{
+				test: /\.(jpg|png|woff|woff2|eot|ttf|svg)$/,
+				use: ['url-loader?limit=100000'],
+			},
 		],
 	},
 	optimization: {
