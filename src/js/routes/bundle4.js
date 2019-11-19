@@ -10,9 +10,6 @@ export default {
 		const SCREEN_PROTECTOR = sreenProtector.default;
 		const IPAD_OPTIONS = {
 			target: 'bundle4',
-			image: {
-				position: 'top',
-			},
 			dropdowns: [
 				{
 					id: 'iPad',
