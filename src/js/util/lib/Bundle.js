@@ -530,6 +530,7 @@ export default class Builder {
 			document.body.classList.add(`${env.clientPrefix}-loaded`);
 		} catch (error) {
 			document.body.classList.add(`${env.clientPrefix}-err`);
+			console.log(error);
 		}
 
 		return this;
