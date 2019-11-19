@@ -3,6 +3,8 @@
 import Dropdown from './Dropdown';
 import env from '../../../../env';
 import {getCookie} from '../helpers/cookies';
+import {strToNumber} from '../helpers/string';
+import { numToCurrency } from '../helpers/number';
 
 export default class Builder {
 	constructor(params) {
@@ -66,26 +68,70 @@ export default class Builder {
 	_renderATCLink() {
 		const CTA_CONTAINER = document.createElement('div');
 		const CTA_WRAPPER = document.createElement('div');
-		const SPACER = document.createElement('div');
+		const PRICE_WRAPPER = document.createElement('div');
+		const PRICE = document.createElement('h6');
 		const CTA = document.createElement('a');
 
 		CTA_CONTAINER.classList.add(`${env.clientPrefix}-cta-container`);
 		CTA_WRAPPER.classList.add(`${env.clientPrefix}-cta-wrapper`);
-		SPACER.classList.add(`${env.clientPrefix}-cta-spacer`);
 		CTA.classList.add(`${env.clientPrefix}-cta`);
 		CTA.href = '#';
 		CTA.innerText = 'Add to Cart';
 
+		PRICE_WRAPPER.classList.add(`${env.clientPrefix}-price-wrapper`)
+		PRICE.classList.add(`${env.clientPrefix}-price`);
+		PRICE.innerHTML = 'Total: '
+		PRICE.innerHTML += `<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+				<defs>
+					<linearGradient x1="8.042%" y1="0%" x2="65.682%" y2="23.865%" id="a">
+						<stop stop-color="#7B827B" stop-opacity="0" offset="0%"/>
+						<stop stop-color="#7B827B" stop-opacity=".631" offset="63.146%"/>
+						<stop stop-color="#7B827B" offset="100%"/>
+					</linearGradient>
+				</defs>
+				<g fill="none" fill-rule="evenodd">
+					<g transform="translate(1 1)">
+						<path d="M36 18c0-9.94-8.06-18-18-18" id="Oval-2" stroke="url(#a)" stroke-width="3" transform="rotate(293.261 18 18)">
+							<animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="0.9s" repeatCount="indefinite"/>
+						</path>
+						<circle fill="#7B827B" cx="36" cy="18" r="1" transform="rotate(293.261 18 18)">
+							<animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="0.9s" repeatCount="indefinite"/>
+						</circle>
+					</g>
+				</g>
+			</svg>`;
+
 		this.elements.atc = CTA;
+		this.elements.price = PRICE;
 
 		this._attachATCEvents();
 
 		CTA_WRAPPER.appendChild(CTA);
 
-		CTA_CONTAINER.appendChild(SPACER);
+		CTA_CONTAINER.appendChild(PRICE);
 		CTA_CONTAINER.appendChild(CTA_WRAPPER);
 
 		return CTA_CONTAINER;
+	}
+
+	_renderPrice() {
+		let regularPrice = 0;
+		let discountPrice = 0;
+
+		this.dropdowns.forEach((dropdown, index) => {
+			let price = strToNumber(dropdown.activeOption.price);
+			regularPrice += price;
+
+			if (index + 1 === this.params.dropdowns.length) {
+				price = this.params.discount.symbol === '$'
+					? (price - this.params.discount.amount)
+					: (price * (this.params.discount.amount / 100))
+			}
+
+			discountPrice += price;
+		});
+
+		this.elements.price.innerHTML = `<span>Total:</span> <span class="regular">${numToCurrency(regularPrice)}</span> ${numToCurrency(discountPrice)}`;
 	}
 
 	_rebuildATCLink() {
@@ -124,7 +170,7 @@ export default class Builder {
 			try {
 				this.elements.wrapper.appendChild(DROPDOWN.html);
 
-				if (++index === this.params.dropdowns.length - 1) {
+				if (index + 1 === this.params.dropdowns.length - 1) {
 					const PLUS = document.createElement('div');
 					const PLUS_ICON = document.createElement('img');
 
@@ -135,10 +181,11 @@ export default class Builder {
 					this.elements.wrapper.appendChild(PLUS);
 				}
 
-				if (++index === this.params.dropdowns.length) {
+				if (index + 1 === this.params.dropdowns.length) {
 					const CTA = this._renderATCLink();
 					this.elements.container.appendChild(CTA);
 					this._buildATCLink();
+					this._renderPrice();
 				}
 			} catch (error) {
 				console.log(error);
@@ -229,6 +276,7 @@ export default class Builder {
 
 		TARGET.addEventListener('dropdown.color.change', (event) => {
 			this._rebuildATCLink();
+			this._renderPrice();
 		});
 
 		// TARGET.addEventListener('dropdown.option.change', (event) => {

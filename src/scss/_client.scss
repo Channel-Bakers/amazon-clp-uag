@@ -117,7 +117,6 @@ CLIENT_PREFIX {
 				flex: 1 0 60%;
 				height: 80%;
 				position: relative;
-				left: -5px;
 			}
 
 			&-title {
@@ -125,6 +124,9 @@ CLIENT_PREFIX {
 				text-transform: uppercase;
 				font-family: 'dare';
 				padding: 10px 0;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
 
 				h1, h2, h3, h4, h5, h6 {
 					margin: 0;
@@ -263,6 +265,38 @@ CLIENT_PREFIX {
 		}
 	}
 
+	&-price {
+		margin: 0 0 0 6px;
+		display: flex;
+		align-items: center;
+		font-family: 'dare';
+		font-size: 1.4rem;
+		color: rgb(246, 127, 66);
+
+		&-wrapper {
+			width: 40%;
+		}
+
+		span {
+			color: #000000;
+			margin-right: 10px;
+
+			&.regular {
+				font-size: 1rem;
+				text-decoration: line-through;
+			}
+		}
+
+		svg {
+			height: 24px;
+			margin-left: 8px;
+
+			path {
+				stroke: #f67f42;
+			}
+		}
+	}
+
 	&-cta {
 		background: rgb(245, 126, 65);
 		color: rgb(255, 255, 255) !important;
@@ -284,10 +318,6 @@ CLIENT_PREFIX {
 
 		&:active, &:link, &:visited, &:hover {
 			color: rgb(255, 255, 255) !important;
-		}
-
-		&-spacer {
-			width: 40%;
 		}
 
 		&-wrapper {
