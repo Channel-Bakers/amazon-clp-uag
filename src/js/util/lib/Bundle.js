@@ -482,14 +482,14 @@ export default class Builder {
 			`[data-bundle-target="${this.params.target}"]`
 		);
 
-		const PARENT_WRAPPER = WRAPPER.closest('.bundle-wrapper');
-		PARENT_WRAPPER.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@${env.release}/assets/img/bundle-bg.jpg')`;
+		// const PARENT_WRAPPER = WRAPPER.closest('.bundle-wrapper');
+		// PARENT_WRAPPER.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@${env.release}/assets/img/bundle-bg.jpg')`;
 
-		if (PARENT_WRAPPER.querySelector('.bundle-wrapper-top')) {
-			PARENT_WRAPPER.querySelector(
-				'.bundle-wrapper-top'
-			).style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@${env.release}/assets/img/bundle-top-bg.jpg')`;
-		}
+		// if (PARENT_WRAPPER.querySelector('.bundle-wrapper-top')) {
+		// 	PARENT_WRAPPER.querySelector(
+		// 		'.bundle-wrapper-top'
+		// 	).style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@${env.release}/assets/img/bundle-top-bg.jpg')`;
+		// }
 
 		if (!WRAPPER || WRAPPER.innerHTML !== '') return;
 
