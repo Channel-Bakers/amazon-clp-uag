@@ -27,7 +27,8 @@ export default {
 				},
 			],
 			discount: {
-				amount: '50%',
+				symbol: '%',
+				amount: '50',
 				product: 'Galaxy Watch Strap',
 			},
 		};
@@ -51,7 +52,8 @@ export default {
 				},
 			],
 			discount: {
-				amount: '50%',
+				symbol: '%',
+				amount: '50',
 				product: 'Galaxy Watch Strap',
 			},
 		};
@@ -75,7 +77,8 @@ export default {
 				},
 			],
 			discount: {
-				amount: '50%',
+				symbol: '%',
+				amount: '50',
 				product: 'Galaxy Watch Strap',
 			},
 		};
@@ -99,7 +102,8 @@ export default {
 				},
 			],
 			discount: {
-				amount: '50%',
+				symbol: '%',
+				amount: '50',
 				product: 'Galaxy Watch Strap',
 			},
 		};
@@ -123,7 +127,8 @@ export default {
 				},
 			],
 			discount: {
-				amount: '50%',
+				symbol: '%',
+				amount: '50',
 				product: 'Galaxy Watch Strap',
 			},
 		};
@@ -147,7 +152,8 @@ export default {
 				},
 			],
 			discount: {
-				amount: '50%',
+				symbol: '%',
+				amount: '50',
 				product: 'Galaxy Watch Strap',
 			},
 		};
