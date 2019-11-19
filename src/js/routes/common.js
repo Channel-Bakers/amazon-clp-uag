@@ -10,11 +10,11 @@ export default {
 		CB.sessionID = getCookie('session-id');
 		CB.tab = getCurrentAmazonTab();
 
-		const FALLBACK_NODES = ['.carousel-wrap:not(:last-of-type)'];
+		const FALLBACK_NODES = ['.carousel-wrap'];
 
 		FALLBACK_NODES.forEach((selector) => {
 			const NODES = document.querySelectorAll(selector);
-			NODES && removeAmazonNodes(NODES);
+			NODES && removeAmazonNodes(NODES[0]);
 		});
 	},
 

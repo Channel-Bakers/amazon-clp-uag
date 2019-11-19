@@ -35,12 +35,16 @@ const getCurrentAmazonTab = (url = false) => {
 
 const removeAmazonNodes = (nodes) => {
 	if (nodes) {
-		try {
-			nodes.forEach((node) => {
-				if (node instanceof Node) node.remove();
-			});
-		} catch (error) {
-			console.log(error);
+		if (nodes instanceof NodeList) {
+			try {
+				nodes.forEach((node) => {
+					if (node instanceof Node) node.remove();
+				});
+			} catch (error) {
+				console.log(error);
+			}
+		} else {
+			if (node instanceof Node) node.remove();
 		}
 	}
 };
