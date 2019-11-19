@@ -113,16 +113,16 @@ export default class Builder {
 
 		this.dropdowns.forEach((dropdown, index) => {
 			atcUrl.searchParams.set(
-				`offeringID.${++index}`,
+				`offeringID.${index +1}`,
 				dropdown.activeOption.offeringID
 			);
 
 			atcUrl.searchParams.set(
-				`asin.${++index}`,
+				`asin.${index + 1}`,
 				dropdown.activeOption.asin
 			);
 
-			atcUrl.searchParams.set(`quantity.${++index}`, '1');
+			atcUrl.searchParams.set(`quantity.${index + 1}`, '1');
 		});
 
 		const SESSION_ID =
