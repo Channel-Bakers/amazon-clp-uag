@@ -28,8 +28,6 @@ body {
   body.uag-err .bundle-wrapper {
     opacity: 0;
     display: none; }
-  body.uag-loaded .bundle-wrapper {
-    opacity: 1; }
   body.uag-loaded .uag-container, body.uag-loaded .uag-image-container {
     opacity: 1; }
 
@@ -47,10 +45,7 @@ body {
       flex-direction: column;
   padding: 0 0 60px;
   max-width: 1500px;
-  margin: auto;
-  opacity: 0;
-  will-change: opacity;
-  transition: opacity 1s ease; }
+  margin: auto; }
   .bundle-wrapper-top {
     background-position: center;
     background-repeat: no-repeat;

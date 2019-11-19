@@ -48,9 +48,9 @@ body {
 	}
 
 	&CLIENT_PREFIX-loaded {
-		.bundle-wrapper {
-			opacity: 1;
-		}
+		// .bundle-wrapper {
+		// 	opacity: 1;
+		// }
 
 		CLIENT_PREFIX {
 			&-container,
@@ -74,9 +74,9 @@ body {
 	max-width: 1500px;
 	margin: auto;
 
-	opacity: 0;
-	will-change: opacity;
-	transition: opacity 1s ease;
+	// opacity: 0;
+	// will-change: opacity;
+	// transition: opacity 1s ease;
 
 	&-top {
 		// background-image: url('../../assets/img/bundle-top-bg.jpg');
