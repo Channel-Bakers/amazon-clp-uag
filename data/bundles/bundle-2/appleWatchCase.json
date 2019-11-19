@@ -8,7 +8,8 @@
 			"color": "Black/Orange",
 			"price": "$24.95",
 			"offeringID": "Fr1yK0a7I8Q8mMG%2FZaosoBYH4c3ppq%2FgYlc%2BwEosmqDFO9e1VGArN8UM22kyL3sCB4GyPxchA0kZCh0DE0DmejrJBmLO%2B0vPdcxSawgqu27yNo9Lo1PfwOWEk%2FU2OcUMj8r5wk0exKH2DISqgOqDKWagxtBimjTO",
-			"promoID": "A40HHK6SWK0RW"
+			"promoID": "A40HHK6SWK0RW",
+			"promoRequest": false
 		}
 	]
 }

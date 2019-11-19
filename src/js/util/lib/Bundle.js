@@ -41,6 +41,14 @@ export default class Builder {
 		ATC.addEventListener('click', async (event) => {
 			event.preventDefault();
 
+			const IS_PROMO_REQUEST = this.dropdowns.filter(
+				(dropdown) => dropdown.promoRequest === false
+			);
+
+			if (IS_PROMO_REQUEST.length) {
+				window.location.href = event.target.href;
+			}
+
 			try {
 				const SESSION_ID =
 					(window.CB && window.CB.sessionID) ||
@@ -108,6 +116,13 @@ export default class Builder {
 				`offeringID.${++index}`,
 				dropdown.activeOption.offeringID
 			);
+
+			atcUrl.searchParams.set(
+				`asin.${++index}`,
+				dropdown.activeOption.asin
+			);
+
+			atcUrl.searchParams.set(`quantity.${++index}`, '1');
 		});
 
 		const SESSION_ID =
