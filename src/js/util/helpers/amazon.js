@@ -44,7 +44,7 @@ const removeAmazonNodes = (nodes) => {
 				console.log(error);
 			}
 		} else {
-			if (node instanceof Node) node.remove();
+			if (nodes instanceof Node) nodes.remove();
 		}
 	}
 };
