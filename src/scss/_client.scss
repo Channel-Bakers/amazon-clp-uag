@@ -24,6 +24,32 @@
 
 body {
 	margin: 0;
+
+	.lp-Tabs-TabPanel.is-selected div[id*="slot-"] .carousel-wrap {
+		opacity: 0;
+		display: none;
+	}
+
+	&CLIENT_PREFIX-err {
+		.lp-Tabs-TabPanel.is-selected div[id*="slot-"] .carousel-wrap {
+			opacity: 1 !important;
+			display: block !important;
+		}
+
+		CLIENT_PREFIX-container {
+			opacity: 0 !important;
+			display: none !important;
+		}
+	}
+
+	&CLIENT_PREFIX-loaded {
+		CLIENT_PREFIX {
+			&-container,
+			&-image-container {
+				opacity: 1;
+			}
+		}
+	}
 }
 
 .bundle-wrapper {
@@ -64,6 +90,10 @@ CLIENT_PREFIX {
 		-webkit-font-smoothing: antialiased;
 		text-rendering: optimizeLegibility;
 
+		opacity: 0;
+		will-change: opacity;
+		transition: opacity 1s ease;
+
 		// background-image: url('../../assets/img/bundle-card-bg.jpg');
 		background-position: center;
 		background-repeat: no-repeat;
@@ -93,6 +123,10 @@ CLIENT_PREFIX {
 			background-size: contain;
 			background-position: center;
 			background-repeat: no-repeat;
+
+			opacity: 0;
+			will-change: opacity;
+			transition: opacity 1s ease;
 			// background-image: url('../../assets/img/bundle-image-bg.png');
 		}
 	}
@@ -286,7 +320,7 @@ CLIENT_PREFIX {
 
 			&.regular {
 				font-size: 1rem;
-				color: rgb(173, 171, 171);
+				color: rgb(109, 107, 107);
 				text-decoration: line-through;
 			}
 		}
