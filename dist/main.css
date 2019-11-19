@@ -113,7 +113,7 @@ body {
         flex: 1 0 40%;
     text-transform: uppercase;
     font-family: 'dare';
-    padding: 10px 0;
+    padding: 10px 50px 10px 0;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;

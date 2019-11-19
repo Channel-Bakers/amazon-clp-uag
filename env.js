@@ -3,5 +3,5 @@ module.exports = {
 	clientPrefix: 'uag',
 	merchantID: 'A3DVC6WBVNJ5RS',
 	primaryTab: 'bundle1',
-	release: '1.0'
+	release: '1.1'
 };
