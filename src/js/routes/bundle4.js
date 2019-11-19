@@ -16,13 +16,18 @@ export default {
 			dropdowns: [
 				{
 					id: 'iPad',
-					data: IPAD,
+					data: IPADS,
 				},
 				{
 					id: 'screenProtector',
 					data: SCREEN_PROTECTOR,
 				},
 			],
+			discount: {
+				symbol: '$',
+				amount: '14.95',
+				product: 'iPad Screen Protector',
+			},
 		};
 
 		const IPAD_BUNDLE = new Bundle({

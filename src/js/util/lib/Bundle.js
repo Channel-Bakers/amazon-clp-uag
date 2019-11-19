@@ -129,7 +129,7 @@ export default class Builder {
 					const PLUS_ICON = document.createElement('img');
 
 					PLUS.classList.add(`${env.clientPrefix}-bundle-plus`);
-					PLUS_ICON.src = 'https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/img/plus.png';
+					PLUS_ICON.src = `https://cdn.jsdelivr.net/gh/rdimascio/uag@${env.release}/assets/img/plus.png`;
 
 					PLUS.appendChild(PLUS_ICON);
 					this.elements.wrapper.appendChild(PLUS);
@@ -362,18 +362,18 @@ export default class Builder {
 		);
 
 		const PARENT_WRAPPER = WRAPPER.closest('.bundle-wrapper');
-		PARENT_WRAPPER.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/img/bundle-bg.jpg')`;
+		PARENT_WRAPPER.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@${env.release}/assets/img/bundle-bg.jpg')`;
 
 		if (PARENT_WRAPPER.querySelector('.bundle-wrapper-top')) {
 			PARENT_WRAPPER.querySelector(
 				'.bundle-wrapper-top'
-			).style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/img/bundle-top-bg.jpg')`;
+			).style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@${env.release}/assets/img/bundle-top-bg.jpg')`;
 		}
 
 		if (!WRAPPER || WRAPPER.innerHTML !== '') return;
 
 		WRAPPER.classList.add(`${env.clientPrefix}-container`);
-		WRAPPER.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/img/bundle-card-bg.jpg')`;
+		WRAPPER.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@${env.release}/assets/img/bundle-card-bg.jpg')`;
 
 		// if (this.params.background) {
 		// 	WRAPPER.style.backgroundImage = this.params.background;
@@ -386,14 +386,16 @@ export default class Builder {
 
 		const HEADER_IMAGE = document.createElement('div');
 		HEADER_IMAGE.classList.add(`${env.clientPrefix}-bundle-header-image`);
-		HEADER_IMAGE.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@0.1/assets/img/${this.params.target}-header.jpg')`;
+		HEADER_IMAGE.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@${env.release}/assets/img/headers/${this.params.target}.png')`;
 
 		const HEADER_TITLE = document.createElement('div');
 		HEADER_TITLE.classList.add(`${env.clientPrefix}-bundle-header-title`);
 		HEADER_TITLE.innerHTML = `
-			<h2>${this.params.discount.symbol === '$'
+			<h2>${
+				this.params.discount.symbol === '$'
 					? `<span class="symbol">$</span>${this.params.discount.amount} <span>off</span>`
-					: `${this.params.discount.amount}<span class="symbol">%</span> <span>off</span>`}</h2>
+					: `${this.params.discount.amount}<span class="symbol">%</span> <span>off</span>`
+			}</h2>
 			<h6>${this.params.discount.product}</h6>
 		`;
 
