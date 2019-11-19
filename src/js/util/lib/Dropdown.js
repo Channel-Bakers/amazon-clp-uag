@@ -192,6 +192,7 @@ export default class Dropdown {
 					price: option.price,
 					image: option.image,
 					offeringID: option.offeringID,
+					promoID: option.promoID
 				};
 
 				OPTION_ELEMENT.setAttribute(
