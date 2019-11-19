@@ -4,7 +4,8 @@ import Dropdown from './Dropdown';
 import env from '../../../../env';
 import {getCookie} from '../helpers/cookies';
 import {strToNumber} from '../helpers/string';
-import { numToCurrency } from '../helpers/number';
+import {numToCurrency} from '../helpers/number';
+import {serializeObject} from '../helpers/object';
 
 export default class Builder {
 	constructor(params) {
@@ -77,7 +78,7 @@ export default class Builder {
 					headers: {
 						'Content-Type': 'application/x-www-form-urlencoded'
 					},
-					body: serialize(ATC_DATA)
+					body: serializeObject(ATC_DATA)
 				}
 			);
 
