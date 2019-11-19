@@ -37,8 +37,57 @@ export default class Builder {
 	_attachATCEvents() {
 		const ATC = this.elements.atc;
 
-		ATC.addEventListener('click', (event) => {
+		ATC.addEventListener('click', async (event) => {
 			event.preventDefault();
+
+			const SESSION_ID =
+				(window.CB && window.CB.sessionID) || getCookie('session-id');
+
+			const ATC_DATA = {
+				sessionid: SESSION_ID,
+				addToCartUrl: '/gp/item-dispatch/ref=dp_promotions_redeemAddToCart',
+				submitaddToCart: 'addToCart',
+			};
+
+			this.dropdowns.forEach((dropdown, index) => {
+				ATC_DATA[`offeringID${index + 1}`] = dropdown.activeOption.offeringID;
+				ATC_DATA[`asin${index + 1}`] = dropdown.activeOption.asin;
+				ATC_DATA[`quantity${index + 1}`] = '1';
+
+				if (dropdown.activeOption.promoID)
+					ATC_DATA['promoId'] = dropdown.activeOption.promoID;
+			});
+
+			// const ATC_DATA = {
+			// 	sessionid: '144-3214042-5579400',
+			// 	offeringID1: 'IVrxrof%2BYnNrFvyVtMBSMNQTzSUnTiBdOB2agWW3Leg463Ohsm6lMpHtInEFZgFtssV%2BR%2BMd6hKY%2FiqyHPhIxb%2FZy50e3ilmYwTmlvmxg7Wwp5UBx2MJV8Mj22RrVLVKUO2dbtWVvnSRp%2FzbmMpjahh1e0J%2BSKI3',
+			// 	asin1: 'B07Z9PSLTL',
+			// 	quantity1: '1',
+			// 	offeringID2: 'PjLwZs8705Q10%2B7Lif2Z01PJ2ZmhcPVWWO8EMGtL8UPisPWI7HXqMvPfehVsCCPtwA7AOnVFZ%2BSTFVWdIL9s6aziuLlJN6eOOuEi8ycz5v%2B%2F6eKbOqhStJ3uFwlituLRI%2Fjol7GPzJPe1CMy1L3chtYy0eYsIFsA',
+			// 	quantity2: '1',
+			// 	asin2: 'B07V3LCJVV',
+			// 	promoId: 'A1OMXARS4854GW',
+			// 	addToCartUrl: '/gp/item-dispatch/ref=dp_promotions_redeemAddToCart',
+			// 	submitaddToCart: 'addToCart'
+			// };
+
+			const ADD_TO_CART = await fetch('https://www.amazon.com/gp/collect-coupon/handler/redeem_coupon_and_addToCart.html',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/x-www-form-urlencoded'
+					},
+					body: serialize(ATC_DATA)
+				}
+			);
+
+			const ATC = await ADD_TO_CART.json();
+
+			if (ATC.ok && ATC.status == 200) {
+				window.location.href = 'https://www.amazon.com/gp/cart/view.html';
+			} else {
+				console.log(ATC);
+			}
 
 			window.open(event.target.href, '_blank');
 		});
