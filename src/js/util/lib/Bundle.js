@@ -41,56 +41,61 @@ export default class Builder {
 		ATC.addEventListener('click', async (event) => {
 			event.preventDefault();
 
-			const SESSION_ID =
-				(window.CB && window.CB.sessionID) || getCookie('session-id');
+			try {
+				const SESSION_ID =
+					(window.CB && window.CB.sessionID) ||
+					getCookie('session-id');
 
-			const ATC_DATA = {
-				sessionid: SESSION_ID,
-				addToCartUrl: '/gp/item-dispatch/ref=dp_promotions_redeemAddToCart',
-				submitaddToCart: 'addToCart',
-			};
+				const ATC_DATA = {
+					sessionid: SESSION_ID,
+					addToCartUrl:
+						'/gp/item-dispatch/ref=dp_promotions_redeemAddToCart',
+					submitaddToCart: 'addToCart',
+				};
 
-			this.dropdowns.forEach((dropdown, index) => {
-				ATC_DATA[`offeringID${index + 1}`] = dropdown.activeOption.offeringID;
-				ATC_DATA[`asin${index + 1}`] = dropdown.activeOption.asin;
-				ATC_DATA[`quantity${index + 1}`] = '1';
+				this.dropdowns.forEach((dropdown, index) => {
+					ATC_DATA[`offeringID${index + 1}`] =
+						dropdown.activeOption.offeringID;
+					ATC_DATA[`asin${index + 1}`] = dropdown.activeOption.asin;
+					ATC_DATA[`quantity${index + 1}`] = '1';
 
-				if (dropdown.activeOption.promoID)
-					ATC_DATA['promoId'] = dropdown.activeOption.promoID;
-			});
+					if (dropdown.activeOption.promoID)
+						ATC_DATA['promoId'] = dropdown.activeOption.promoID;
+				});
 
-			// const ATC_DATA = {
-			// 	sessionid: '144-3214042-5579400',
-			// 	offeringID1: 'IVrxrof%2BYnNrFvyVtMBSMNQTzSUnTiBdOB2agWW3Leg463Ohsm6lMpHtInEFZgFtssV%2BR%2BMd6hKY%2FiqyHPhIxb%2FZy50e3ilmYwTmlvmxg7Wwp5UBx2MJV8Mj22RrVLVKUO2dbtWVvnSRp%2FzbmMpjahh1e0J%2BSKI3',
-			// 	asin1: 'B07Z9PSLTL',
-			// 	quantity1: '1',
-			// 	offeringID2: 'PjLwZs8705Q10%2B7Lif2Z01PJ2ZmhcPVWWO8EMGtL8UPisPWI7HXqMvPfehVsCCPtwA7AOnVFZ%2BSTFVWdIL9s6aziuLlJN6eOOuEi8ycz5v%2B%2F6eKbOqhStJ3uFwlituLRI%2Fjol7GPzJPe1CMy1L3chtYy0eYsIFsA',
-			// 	quantity2: '1',
-			// 	asin2: 'B07V3LCJVV',
-			// 	promoId: 'A1OMXARS4854GW',
-			// 	addToCartUrl: '/gp/item-dispatch/ref=dp_promotions_redeemAddToCart',
-			// 	submitaddToCart: 'addToCart'
-			// };
+				// const ATC_DATA = {
+				// 	sessionid: '144-3214042-5579400',
+				// 	offeringID1: 'IVrxrof%2BYnNrFvyVtMBSMNQTzSUnTiBdOB2agWW3Leg463Ohsm6lMpHtInEFZgFtssV%2BR%2BMd6hKY%2FiqyHPhIxb%2FZy50e3ilmYwTmlvmxg7Wwp5UBx2MJV8Mj22RrVLVKUO2dbtWVvnSRp%2FzbmMpjahh1e0J%2BSKI3',
+				// 	asin1: 'B07Z9PSLTL',
+				// 	quantity1: '1',
+				// 	offeringID2: 'PjLwZs8705Q10%2B7Lif2Z01PJ2ZmhcPVWWO8EMGtL8UPisPWI7HXqMvPfehVsCCPtwA7AOnVFZ%2BSTFVWdIL9s6aziuLlJN6eOOuEi8ycz5v%2B%2F6eKbOqhStJ3uFwlituLRI%2Fjol7GPzJPe1CMy1L3chtYy0eYsIFsA',
+				// 	quantity2: '1',
+				// 	asin2: 'B07V3LCJVV',
+				// 	promoId: 'A1OMXARS4854GW',
+				// 	addToCartUrl: '/gp/item-dispatch/ref=dp_promotions_redeemAddToCart',
+				// 	submitaddToCart: 'addToCart'
+				// };
 
-			const ADD_TO_CART = await fetch('https://www.amazon.com/gp/collect-coupon/handler/redeem_coupon_and_addToCart.html',
-				{
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/x-www-form-urlencoded'
-					},
-					body: serializeObject(ATC_DATA)
-				}
-			);
-
-			const ATC = await ADD_TO_CART.json();
-
-			if (ATC.ok && ATC.status == 200) {
-				window.location.href = 'https://www.amazon.com/gp/cart/view.html';
-			} else {
-				console.log(ATC);
+				fetch(
+					'https://www.amazon.com/gp/collect-coupon/handler/redeem_coupon_and_addToCart.html',
+					{
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/x-www-form-urlencoded',
+						},
+						body: serializeObject(ATC_DATA),
+					}
+				).then((response) => {
+					if (response && response.ok && response.status == 200) {
+						window.location.href =
+							'https://www.amazon.com/gp/cart/view.html';
+					} else {
+						console.log(response);
+					}
+				});
+			} catch (error) {
+				window.open(event.target.href, '_blank');
 			}
-
-			window.open(event.target.href, '_blank');
 		});
 	}
 
@@ -128,9 +133,9 @@ export default class Builder {
 		CTA.href = '#';
 		CTA.innerText = 'Add to Cart';
 
-		PRICE_WRAPPER.classList.add(`${env.clientPrefix}-price-wrapper`)
+		PRICE_WRAPPER.classList.add(`${env.clientPrefix}-price-wrapper`);
 		PRICE.classList.add(`${env.clientPrefix}-price`);
-		PRICE.innerHTML = 'Total: '
+		PRICE.innerHTML = 'Total: ';
 		PRICE.innerHTML += `<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
 				<defs>
 					<linearGradient x1="8.042%" y1="0%" x2="65.682%" y2="23.865%" id="a">
@@ -173,15 +178,18 @@ export default class Builder {
 			regularPrice += price;
 
 			if (index + 1 === this.params.dropdowns.length) {
-				price = this.params.discount.symbol === '$'
-					? (price - this.params.discount.amount)
-					: (price * (this.params.discount.amount / 100))
+				price =
+					this.params.discount.symbol === '$'
+						? price - this.params.discount.amount
+						: price * (this.params.discount.amount / 100);
 			}
 
 			discountPrice += price;
 		});
 
-		this.elements.price.innerHTML = `<span>Total:</span> <span class="regular">${numToCurrency(regularPrice)}</span> ${numToCurrency(discountPrice)}`;
+		this.elements.price.innerHTML = `<span>Total:</span> <span class="regular">${numToCurrency(
+			regularPrice
+		)}</span> ${numToCurrency(discountPrice)}`;
 	}
 
 	_rebuildATCLink() {
