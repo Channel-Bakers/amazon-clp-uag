@@ -193,11 +193,15 @@ export default class Builder {
 		let regularPrice = 0;
 		let discountPrice = 0;
 		let outOfStock = false;
+		let dropdowns = [];
 
 		this.dropdowns.forEach((dropdown, index) => {
 			if (!dropdown.activeOption.available) {
 				outOfStock = true;
+				return;
 			}
+
+			if (dropdown.activeOption) dropdowns.push(dropdown.activeOption);
 
 			let price = dropdown.activeOption.price
 				? strToNumber(dropdown.activeOption.price)
@@ -219,12 +223,11 @@ export default class Builder {
 		)}</span>`;
 		discountPrice = numToCurrency(discountPrice);
 
+		if (dropdowns.length !== this.params.dropdowns.length) return;
+
 		if (!outOfStock && discountPrice && regularPrice) {
 			this.elements.price.innerHTML = `<span>Total:</span> ${regularPrice} ${discountPrice}`;
 		} else {
-			console.log(this.dropdowns.forEach((dropdown) => {
-				dropdown.activeOption;
-			}));
 			this.elements.price.innerHTML = '<span>Out of Stock</span>';
 		}
 	}
