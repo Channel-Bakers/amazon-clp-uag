@@ -242,7 +242,7 @@ export default class Builder {
 		)}</span>`;
 		discountPrice = numToCurrency(discountPrice);
 
-		if (dropdowns.length !== this.params.dropdowns.length) return;
+		if (!outOfStock && dropdowns.length !== this.params.dropdowns.length) return;
 
 		if (!outOfStock && discountPrice && regularPrice) {
 			this.elements.price.innerHTML = `<span>Total:</span> ${regularPrice} ${discountPrice}`;
