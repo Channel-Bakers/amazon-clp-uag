@@ -208,6 +208,7 @@ export default class Builder {
 	}
 
 	_renderPrice() {
+		console.log('bruh');
 		let regularPrice = 0;
 		let discountPrice = 0;
 		let outOfStock = false;
@@ -216,9 +217,10 @@ export default class Builder {
 		this.dropdowns.forEach((dropdown, index) => {
 			if (!dropdown.activeOption.available) {
 				outOfStock = true;
+				return;
 			}
 
-			if (dropdown.activeOption) dropdowns.push(dropdown.activeOption);
+			dropdowns.push(index);
 
 			let price = dropdown.activeOption.price
 				? strToNumber(dropdown.activeOption.price)
