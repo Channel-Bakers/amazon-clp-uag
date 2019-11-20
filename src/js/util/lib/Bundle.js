@@ -277,7 +277,7 @@ export default class Builder {
 					const CTA = this._renderATCLink();
 					this.elements.container.appendChild(CTA);
 					this._buildATCLink();
-					this._renderPrice();
+					// this._renderPrice();
 				}
 			} catch (error) {
 				console.log(error);
