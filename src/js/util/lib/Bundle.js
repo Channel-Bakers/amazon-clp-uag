@@ -47,6 +47,8 @@ export default class Builder {
 		ATC.addEventListener('click', async (event) => {
 			event.preventDefault();
 
+			if (event.target.classList.contains('disabled')) return false;
+
 			const IS_PROMO_REQUEST = this.dropdowns.filter(
 				(dropdown) => dropdown.promoRequest === false
 			);
@@ -189,6 +191,22 @@ export default class Builder {
 		return CTA_CONTAINER;
 	}
 
+	_disableATC() {
+		this.params.state.available = false;
+
+		if (this.elements.atc) {
+			this.elements.atc.classList.add('disabled');
+		}
+	}
+
+	_enableATC() {
+		this.params.state.available = true;
+
+		if (this.elements.atc) {
+			this.elements.atc.classList.remove('disabled');
+		}
+	}
+
 	_renderPrice() {
 		let regularPrice = 0;
 		let discountPrice = 0;
@@ -227,8 +245,10 @@ export default class Builder {
 
 		if (!outOfStock && discountPrice && regularPrice) {
 			this.elements.price.innerHTML = `<span>Total:</span> ${regularPrice} ${discountPrice}`;
+			this._enableATC();
 		} else {
 			this.elements.price.innerHTML = '<span>Out of Stock</span>';
+			this._disableATC();
 		}
 	}
 
