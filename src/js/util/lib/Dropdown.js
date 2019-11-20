@@ -580,7 +580,7 @@ export default class Dropdown {
 		this._renderImage();
 
 		// Scrape the ASIN page
-		await this._updatePrice();
+		this._updatePrice();
 
 		await this._events();
 
