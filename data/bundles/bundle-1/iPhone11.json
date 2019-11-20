@@ -180,13 +180,15 @@
 			"color": "Olive Drab",
 			"price": "$49.95",
 			"offeringID": "PPsMMmm96LrvgXmpEr5U3tTEDMVs7N3PR0uMnnhX%2FNWxeTmzHtsnIUZ363UWBhty1hzO9EqPmplYawjjz%2B9myace9yp4S2am4GagJL54lQ9AcJFq60uxYAzb72tgael8MiGf6q%2F5UvmjwygcUqMZLm6U%2BtkCITIj"
-		},
+		}
+	],
+	"metropolis": [
 		{
 			"asin": "B07XHNHLTP",
 			"title": "URBAN ARMOR GEAR UAG Designed for iPhone 11 [6.1-inch Screen] Metropolis Feather-Light Rugged [Black] Military Drop Tested iPhone Case",
 			"image": "https://images-na.ssl-images-amazon.com/images/I/9101Oyh%2BEfL._SX679_.jpg",
-			"series": "Civilian",
-			"color": "Olive Drab",
+			"series": "Metropolis",
+			"color": "Black",
 			"price": "$39.95",
 			"offeringID": "DRdaCZtJFoaxzqgBmmAjhjOdFzaqStSRziwIq3bbQqEsg1xearwe4NDDiNRu5bipUUDdzSO2KMijKf4qIy7YP6NjS69yHQC37oIkc8yF6GahHKVTS4FQyZbZWKCwwi0MsZ5HZEuE87JH5pHbWxgbFfJh462rIfXt"
 		}
