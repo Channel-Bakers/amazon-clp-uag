@@ -27,6 +27,12 @@ export default class Builder {
 		})();
 	}
 
+	_isMobile() {
+		return document
+			.querySelector('.shipable-page')
+			.classList.contains('platform-phone');
+	}
+
 	// getActiveSeries() {
 	// 	return this.params.colors.reduce((color) => color.active && color);
 	// }
@@ -113,7 +119,7 @@ export default class Builder {
 
 		this.dropdowns.forEach((dropdown, index) => {
 			atcUrl.searchParams.set(
-				`offeringID.${index +1}`,
+				`offeringID.${index + 1}`,
 				dropdown.activeOption.offeringID
 			);
 
@@ -494,7 +500,11 @@ export default class Builder {
 		if (!WRAPPER || WRAPPER.innerHTML !== '') return;
 
 		WRAPPER.classList.add(`${env.clientPrefix}-container`);
-		WRAPPER.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@${env.release}/assets/img/bundle-card-bg.jpg')`;
+		WRAPPER.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@${
+			env.release
+		}/assets/img/bundle-${
+			this._isMobile() ? 'mobile-card' : 'card'
+		}-bg.jpg')`;
 
 		// if (this.params.background) {
 		// 	WRAPPER.style.backgroundImage = this.params.background;
