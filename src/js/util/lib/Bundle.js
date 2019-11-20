@@ -195,6 +195,8 @@ export default class Builder {
 		let discountPrice = 0;
 		let outOfStock = false;
 
+		if (this.dropdowns.length !== this.params.dropdowns.length) return;
+
 		this.dropdowns.forEach((dropdown, index) => {
 			if (!dropdown.activeOption.available) {
 				outOfStock = true;

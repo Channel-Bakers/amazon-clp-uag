@@ -361,7 +361,7 @@ export default class Dropdown {
 	}
 
 	async _updatePrice() {
-		this.params.bundle.elements.price = `<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+		this.params.bundle.elements.price.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
 				<defs>
 					<linearGradient x1="8.042%" y1="0%" x2="65.682%" y2="23.865%" id="a">
 						<stop stop-color="#7B827B" stop-opacity="0" offset="0%"/>
