@@ -208,7 +208,6 @@ export default class Builder {
 	}
 
 	_renderPrice() {
-		console.log('bruh');
 		let regularPrice = 0;
 		let discountPrice = 0;
 		let outOfStock = false;
