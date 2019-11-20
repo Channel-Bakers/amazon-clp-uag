@@ -216,7 +216,6 @@ export default class Builder {
 		this.dropdowns.forEach((dropdown, index) => {
 			if (!dropdown.activeOption.available) {
 				outOfStock = true;
-				return;
 			}
 
 			if (dropdown.activeOption) dropdowns.push(dropdown.activeOption);

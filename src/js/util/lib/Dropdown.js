@@ -50,10 +50,6 @@ export default class Dropdown {
 			const OUT_OF_STOCK = ASIN.value !== this.activeOption.asin;
 
 			if (OUT_OF_STOCK) {
-				console.log('ASINs do not match');
-				console.log(ASIN.value);
-				console.log(this.activeOption.asin);
-
 				PRICE.price = null;
 				PRICE.available = false;
 				return PRICE;
