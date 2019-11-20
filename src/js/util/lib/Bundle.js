@@ -192,7 +192,7 @@ export default class Builder {
 	}
 
 	_disableATC() {
-		this.params.state.available = false;
+		this.state.available = false;
 
 		if (this.elements.atc) {
 			this.elements.atc.classList.add('disabled');
@@ -200,7 +200,7 @@ export default class Builder {
 	}
 
 	_enableATC() {
-		this.params.state.available = true;
+		this.state.available = true;
 
 		if (this.elements.atc) {
 			this.elements.atc.classList.remove('disabled');
