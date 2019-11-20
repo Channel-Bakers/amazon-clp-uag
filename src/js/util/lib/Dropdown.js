@@ -47,7 +47,7 @@ export default class Dropdown {
 
 		try {
 			const ASIN = html.getElementById('ASIN');
-			const OUT_OF_STOCK = ASIN.value == this.activeOption.asin;
+			const OUT_OF_STOCK = ASIN.value !== this.activeOption.asin;
 
 			if (OUT_OF_STOCK) {
 				console.log('ASINs do not match');
