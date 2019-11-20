@@ -50,6 +50,10 @@ export default class Dropdown {
 			const OUT_OF_STOCK = ASIN.value === this.activeOption.asin;
 
 			if (OUT_OF_STOCK) {
+				console.log('ASINs do not match');
+				console.log(ASIN.value);
+				console.log(this.activeOption.asin);
+
 				PRICE.price = null;
 				PRICE.available = false;
 				return PRICE;
@@ -150,6 +154,10 @@ export default class Dropdown {
 					// this._scrapeOtherSellers();
 
 					// This is the return not available method
+					console.log('merchantID does not match');
+					console.log(MERCHANT_ID);
+					console.log(env.merchantID);
+
 					PRICE.price = null;
 					PRICE.available = false;
 					return PRICE;
