@@ -74,9 +74,7 @@ export default class Dropdown {
 					let priceCents = MOBILE_PRICE_TABLE.querySelector(
 						'.price-info-superscript'
 					);
-					priceCents = priceCents
-						? priceCents.innerText
-						: '00';
+					priceCents = priceCents ? priceCents.innerText : '00';
 
 					if (SALE_PRICE_DOLLARS) {
 						let price = `${SALE_PRICE_DOLLARS.innerText}.${priceCents}`;
@@ -89,8 +87,9 @@ export default class Dropdown {
 				}
 
 				// CHECK TO SEE IF UAG IS WINNING THE BUY BOX
-				// IF NOT, WE HAVE TO 
-				const MERCHANT_ID = html.querySelector('#ftSelectMerchant').value;
+				// IF NOT, WE HAVE TO
+				const MERCHANT_ID = html.querySelector('#ftSelectMerchant')
+					.value;
 
 				if (MERCHANT_ID !== env.merchantID) {
 					// UAG is not winning the Buy Box
@@ -143,7 +142,7 @@ export default class Dropdown {
 				}
 
 				// CHECK TO SEE IF UAG IS WINNING THE BUY BOX
-				// IF NOT, WE HAVE TO 
+				// IF NOT, WE HAVE TO
 				const MERCHANT_ID = html.querySelector('#merchantID').value;
 
 				if (MERCHANT_ID !== env.merchantID) {
@@ -221,9 +220,7 @@ export default class Dropdown {
 
 			const PRICE = this._parsePrice(HTML);
 
-			return PRICE &&
-				typeof PRICE === 'object' &&
-				!isObjectEmpty(PRICE)
+			return PRICE && typeof PRICE === 'object' && !isObjectEmpty(PRICE)
 				? PRICE
 				: this.activeOption.price;
 		} catch {
@@ -357,13 +354,26 @@ export default class Dropdown {
 		this.activeOption = this._getActiveColor();
 	}
 
-	_rebuildATCLink() {
-		const OPTION_CHANGE = new CustomEvent('dropdown.color.change', {
-			detail: this.activeOption,
-		});
-
-		this.params.builder.elements.wrapper.dispatchEvent(OPTION_CHANGE);
+	_updateImage(available = true) {
+		this.elements.image.style.backgroundImage = `url('${
+			available ? this.activeOption.image : this.activeOption.image
+		}')`;
 	}
+
+	async _updatePrice() {
+		const NEW_PRICE = await this._scrapePrice();
+
+		this.activeOption.price = NEW_PRICE.price;
+		this.activeOption.available = NEW_PRICE.available;
+	}
+
+	// _rebuildATCLink() {
+	// 	const OPTION_CHANGE = new CustomEvent('dropdown.color.change', {
+	// 		detail: this.activeOption,
+	// 	});
+
+	// 	this.params.builder.elements.wrapper.dispatchEvent(OPTION_CHANGE);
+	// }
 
 	async _renderSeries() {
 		const SERIES_WRAPPER = document.createElement('div');
@@ -469,7 +479,7 @@ export default class Dropdown {
 					price: option.price,
 					image: option.image,
 					offeringID: option.offeringID,
-					promoID: option.promoID
+					promoID: option.promoID,
 				};
 
 				OPTION_ELEMENT.setAttribute(
@@ -569,7 +579,8 @@ export default class Dropdown {
 
 		this._renderImage();
 
-		// if (this.params.atc) this._buildATCLink();
+		// Scrape the ASIN page
+		await this._updatePrice();
 
 		await this._events();
 
@@ -577,29 +588,35 @@ export default class Dropdown {
 		// this.params.builder.dropdowns.push(this);
 	}
 
+	async _handleColorChange() {
+		// Update the active option
+		this._updateActiveOption();
+
+		// Scrape the ASIN page
+		await this._updatePrice();
+
+		// Update the image
+		this._updateImage();
+
+		// Dispatch an event to the bundle
+		const OPTION_CHANGE = new CustomEvent('dropdown.color.change', {
+			detail: this.activeOption,
+		});
+
+		this.params.bundle.elements.wrapper.dispatchEvent(OPTION_CHANGE);
+	}
+
 	async _events() {
 		const SERIES = this.elements.series;
 		const COLOR = this.elements.color;
 
-		SERIES.addEventListener('change', async () => {
-			this._updateActiveOption();
+		SERIES.addEventListener('change', () => {
 			this._rebuildColorOptions();
-			this._rebuildATCLink();
-			this.elements.image.style.backgroundImage = `url('${this.activeOption.image}')`;
-
-			const NEW_PRICE = await this._scrapePrice();
-
-			console.log(NEW_PRICE);
+			this._handleColorChange();
 		});
 
-		COLOR.addEventListener('change', async () => {
-			this._updateActiveOption();
-			this._rebuildATCLink();
-			this.elements.image.style.backgroundImage = `url('${this.activeOption.image}')`;
-
-			const NEW_PRICE = await this._scrapePrice();
-
-			console.log(NEW_PRICE);
+		COLOR.addEventListener('change', () => {
+			this._handleColorChange();
 		});
 
 		return this;

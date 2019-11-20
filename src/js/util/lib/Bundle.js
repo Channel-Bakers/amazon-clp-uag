@@ -193,9 +193,16 @@ export default class Builder {
 	_renderPrice() {
 		let regularPrice = 0;
 		let discountPrice = 0;
+		let outOfStock = false;
 
 		this.dropdowns.forEach((dropdown, index) => {
-			let price = strToNumber(dropdown.activeOption.price);
+			if (!dropdown.activeOption.available) {
+				outOfStock = true;
+			}
+
+			let price = dropdown.activeOption.price
+				? strToNumber(dropdown.activeOption.price)
+				: 0;
 			regularPrice += price;
 
 			if (index + 1 === this.params.dropdowns.length) {
@@ -208,9 +215,15 @@ export default class Builder {
 			discountPrice += price;
 		});
 
-		this.elements.price.innerHTML = `<span>Total:</span> <span class="regular">${numToCurrency(
+		regularPrice = `<span class="regular">${numToCurrency(
 			regularPrice
-		)}</span> ${numToCurrency(discountPrice)}`;
+		)}</span>`;
+		discountPrice = numToCurrency(discountPrice);
+
+		this.elements.price.innerHTML =
+			!outOfStock && discountPrice && regularPrice
+				? `<span>Total:</span> ${regularPrice} ${discountPrice}`
+				: '<span>Out of Stock</span>';
 	}
 
 	_rebuildATCLink() {
@@ -241,7 +254,7 @@ export default class Builder {
 		this.params.dropdowns.forEach(async (dropdown, index) => {
 			const DROPDOWN = await new Dropdown({
 				...dropdown,
-				builder: this,
+				bundle: this,
 			});
 
 			this.dropdowns.push(DROPDOWN);
