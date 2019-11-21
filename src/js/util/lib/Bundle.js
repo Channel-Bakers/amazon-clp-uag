@@ -214,6 +214,9 @@ export default class Builder {
 		let dropdowns = [];
 
 		this.dropdowns.forEach((dropdown, index) => {
+			if (!dropdown.activeOption)
+				return;
+
 			if (!dropdown.activeOption.available) {
 				outOfStock = true;
 				return;
@@ -241,14 +244,13 @@ export default class Builder {
 		)}</span>`;
 		discountPrice = numToCurrency(discountPrice);
 
-		if (!outOfStock && dropdowns.length !== this.params.dropdowns.length) return;
+		if (!outOfStock && dropdowns.length < this.params.dropdowns.length) return;
 
 		if (!outOfStock && discountPrice && regularPrice) {
 			this.elements.price.innerHTML = `<span>Total:</span> ${regularPrice} ${discountPrice}`;
 			this._enableATC();
 		} else {
-			if (!outOfStock && dropdowns.length !== this.params.dropdowns.length) return;
-			console.log(dropdown.activeOption.available, outOfStock, dropdowns.length, this.params.dropdowns.length);
+			console.log(outOfStock, dropdowns.length, this.params.dropdowns.length);
 			this.elements.price.innerHTML = '<span>Out of Stock</span>';
 			this._disableATC();
 		}
