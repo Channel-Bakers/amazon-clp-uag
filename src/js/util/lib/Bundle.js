@@ -247,7 +247,7 @@ export default class Builder {
 			this.elements.price.innerHTML = `<span>Total:</span> ${regularPrice} ${discountPrice}`;
 			this._enableATC();
 		} else {
-			console.log(dropdowns);
+			if (!outOfStock && dropdowns.length !== this.params.dropdowns.length) return;
 			this.elements.price.innerHTML = '<span>Out of Stock</span>';
 			this._disableATC();
 		}
