@@ -46,7 +46,7 @@ export default class Dropdown {
 		let price;
 
 		try {
-			const ASIN = html.getElementById('ASIN');
+			const ASIN = html.getElementById('ASIN') ? html.getElementById('ASIN') : html.getElementById('asin');
 			const OUT_OF_STOCK = ASIN.value !== this.activeOption.asin;
 
 			if (OUT_OF_STOCK) {

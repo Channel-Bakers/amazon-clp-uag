@@ -545,8 +545,8 @@ export default class Builder {
 		WRAPPER.style.backgroundImage = `url('https://cdn.jsdelivr.net/gh/rdimascio/uag@${
 			env.release
 		}/assets/img/bundle-${
-			this._isMobile() ? 'mobile-card' : 'card'
-		}-bg-high.jpg')`;
+			this._isMobile() ? 'mobile-card-bg' : 'card-bg-high'
+		}.jpg')`;
 
 		// if (this.params.background) {
 		// 	WRAPPER.style.backgroundImage = this.params.background;
