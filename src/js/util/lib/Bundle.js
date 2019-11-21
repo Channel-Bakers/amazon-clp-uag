@@ -250,7 +250,6 @@ export default class Builder {
 			this.elements.price.innerHTML = `<span>Total:</span> ${regularPrice} ${discountPrice}`;
 			this._enableATC();
 		} else {
-			console.log(outOfStock, dropdowns.length, this.params.dropdowns.length);
 			this.elements.price.innerHTML = '<span>Out of Stock</span>';
 			this._disableATC();
 		}
