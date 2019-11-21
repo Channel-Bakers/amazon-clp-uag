@@ -248,7 +248,7 @@ export default class Builder {
 			this._enableATC();
 		} else {
 			if (!outOfStock && dropdowns.length !== this.params.dropdowns.length) return;
-			console.log(dropdowns.length, this.params.dropdowns.length);
+			console.log(dropdown.activeOption.available, outOfStock, dropdowns.length, this.params.dropdowns.length);
 			this.elements.price.innerHTML = '<span>Out of Stock</span>';
 			this._disableATC();
 		}
