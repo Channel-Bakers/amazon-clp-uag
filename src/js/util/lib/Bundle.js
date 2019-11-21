@@ -219,7 +219,7 @@ export default class Builder {
 				return;
 			}
 
-			dropdowns.push(index);
+			dropdowns.push(dropdown.activeOption);
 
 			let price = dropdown.activeOption.price
 				? strToNumber(dropdown.activeOption.price)
@@ -247,6 +247,7 @@ export default class Builder {
 			this.elements.price.innerHTML = `<span>Total:</span> ${regularPrice} ${discountPrice}`;
 			this._enableATC();
 		} else {
+			console.log(dropdowns);
 			this.elements.price.innerHTML = '<span>Out of Stock</span>';
 			this._disableATC();
 		}
@@ -543,7 +544,7 @@ export default class Builder {
 			env.release
 		}/assets/img/bundle-${
 			this._isMobile() ? 'mobile-card' : 'card'
-		}-bg.jpg')`;
+		}-bg-high.jpg')`;
 
 		// if (this.params.background) {
 		// 	WRAPPER.style.backgroundImage = this.params.background;
