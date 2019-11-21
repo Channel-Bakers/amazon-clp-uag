@@ -43,9 +43,7 @@ body {
       align-items: flex-end;
   -ms-flex-direction: column;
       flex-direction: column;
-  padding: 0 0 60px;
-  max-width: 1500px;
-  margin: auto; }
+  padding: 0 0 60px; }
   .bundle-wrapper-top {
     background-position: center;
     background-repeat: no-repeat;
@@ -122,7 +120,7 @@ body {
   height: 80px;
   padding-left: 20px; }
   .uag-bundle-header-image {
-    background-position: center;
+    background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
     -ms-flex: 1 0 60%;

@@ -71,8 +71,6 @@ body {
 	align-items: flex-end;
 	flex-direction: column;
 	padding: 0 0 60px;
-	max-width: 1500px;
-	margin: auto;
 
 	// opacity: 0;
 	// will-change: opacity;
@@ -159,7 +157,7 @@ CLIENT_PREFIX {
 			padding-left: 20px;
 
 			&-image {
-				background-position: center;
+				background-position: left top;
 				background-repeat: no-repeat;
 				background-size: contain;
 				flex: 1 0 60%;
