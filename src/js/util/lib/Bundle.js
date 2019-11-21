@@ -214,10 +214,10 @@ export default class Builder {
 		let dropdowns = [];
 
 		this.dropdowns.forEach((dropdown, index) => {
-			if (!dropdown.activeOption)
+			if (!dropdown || !dropdown.activeOption)
 				return;
 
-			if (!dropdown.activeOption.available) {
+			if (dropdown.activeOption.available === false) {
 				outOfStock = true;
 				return;
 			}
