@@ -46,10 +46,24 @@ export default class Dropdown {
 		let price;
 
 		try {
-			const ASIN = html.getElementById('ASIN') ? html.getElementById('ASIN') : html.getElementById('asin');
+			const ASIN = html.getElementById('ASIN')
+				? html.getElementById('ASIN')
+				: html.getElementById('asin');
 			const OUT_OF_STOCK = ASIN.value !== this.activeOption.asin;
 
 			if (OUT_OF_STOCK) {
+				PRICE.price = null;
+				PRICE.available = false;
+				return PRICE;
+			}
+
+			// CHECK TO SEE IF UAG IS WINNING THE BUY BOX
+			const MERCHANT = html.querySelector('#merchantID')
+				? html.querySelector('#merchantID')
+				: html.querySelector('#ftSelectMerchant');
+			const MERCHANT_ID = MERCHANT.value;
+
+			if (MERCHANT_ID !== env.merchantID) {
 				PRICE.price = null;
 				PRICE.available = false;
 				return PRICE;
@@ -80,24 +94,6 @@ export default class Dropdown {
 							prices.push(price);
 						}
 					}
-				}
-
-				// CHECK TO SEE IF UAG IS WINNING THE BUY BOX
-				// IF NOT, WE HAVE TO
-				const MERCHANT_ID = html.querySelector('#ftSelectMerchant')
-					.value;
-
-				if (MERCHANT_ID !== env.merchantID) {
-					// UAG is not winning the Buy Box
-					// so we can either return not available
-					// or scrape the other sellers html and look
-					// for their merchant ID and offerListing ID
-					// this._scrapeOtherSellers();
-
-					// This is the return not available method
-					PRICE.price = null;
-					PRICE.available = false;
-					return PRICE;
 				}
 			} else {
 				const PRICE_TABLE = html.querySelector('#price');
@@ -135,27 +131,6 @@ export default class Dropdown {
 							}
 						}
 					});
-				}
-
-				// CHECK TO SEE IF UAG IS WINNING THE BUY BOX
-				// IF NOT, WE HAVE TO
-				const MERCHANT_ID = html.querySelector('#merchantID').value;
-
-				if (MERCHANT_ID !== env.merchantID) {
-					// UAG is not winning the Buy Box
-					// so we can either return not available
-					// or scrape the other sellers html and look
-					// for their merchant ID and offerListing ID
-					// this._scrapeOtherSellers();
-
-					// This is the return not available method
-					console.log('merchantID does not match');
-					console.log(MERCHANT_ID);
-					console.log(env.merchantID);
-
-					PRICE.price = null;
-					PRICE.available = false;
-					return PRICE;
 				}
 			}
 
