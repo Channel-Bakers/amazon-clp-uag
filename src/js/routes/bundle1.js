@@ -22,14 +22,14 @@ export default {
 					data: IPHONE_11,
 				},
 				{
-					id: 'watchCase',
+					id: 'watchBand',
 					data: WATCH_BANDS,
 				},
 			],
 			discount: {
 				symbol: '%',
 				amount: '50',
-				product: 'Apple Watch Case',
+				product: 'Apple Watch Band',
 			},
 		};
 
@@ -50,14 +50,14 @@ export default {
 					data: IPHONE_11_PRO,
 				},
 				{
-					id: 'watchCase',
+					id: 'watchBand',
 					data: WATCH_BANDS,
 				},
 			],
 			discount: {
 				symbol: '%',
 				amount: '50',
-				product: 'Apple Watch Case',
+				product: 'Apple Watch Band',
 			},
 		};
 
@@ -78,14 +78,14 @@ export default {
 					data: IPHONE_11_PRO_MAX,
 				},
 				{
-					id: 'watchCase',
+					id: 'watchBand',
 					data: WATCH_BANDS,
 				},
 			],
 			discount: {
 				symbol: '%',
 				amount: '50',
-				product: 'Apple Watch Case',
+				product: 'Apple Watch Band',
 			},
 		};
 
