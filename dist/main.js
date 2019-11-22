@@ -258,7 +258,7 @@ eval("module.exports = JSON.parse(\"{\\\"screen protector\\\":[{\\\"asin\\\":\\\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = {\n\tnodeEnv: 'development',\n\tclientPrefix: 'uag',\n\tmerchantID: 'A3DVC6WBVNJ5RS',\n\tprimaryTab: 'bundle1',\n\trelease: '1.9.8'\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9lbnYuanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9lbnYuanM/NDdlMyJdLCJzb3VyY2VzQ29udGVudCI6WyJtb2R1bGUuZXhwb3J0cyA9IHtcblx0bm9kZUVudjogJ2RldmVsb3BtZW50Jyxcblx0Y2xpZW50UHJlZml4OiAndWFnJyxcblx0bWVyY2hhbnRJRDogJ0EzRFZDNldCVk5KNVJTJyxcblx0cHJpbWFyeVRhYjogJ2J1bmRsZTEnLFxuXHRyZWxlYXNlOiAnMS45LjgnXG59O1xuIl0sIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTsiLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./env.js\n");
+eval("module.exports = {\n\tnodeEnv: 'development',\n\tclientPrefix: 'uag',\n\tmerchantID: 'A3DVC6WBVNJ5RS',\n\tprimaryTab: 'bundle1',\n\trelease: '2.0'\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9lbnYuanMuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9lbnYuanM/NDdlMyJdLCJzb3VyY2VzQ29udGVudCI6WyJtb2R1bGUuZXhwb3J0cyA9IHtcblx0bm9kZUVudjogJ2RldmVsb3BtZW50Jyxcblx0Y2xpZW50UHJlZml4OiAndWFnJyxcblx0bWVyY2hhbnRJRDogJ0EzRFZDNldCVk5KNVJTJyxcblx0cHJpbWFyeVRhYjogJ2J1bmRsZTEnLFxuXHRyZWxlYXNlOiAnMi4wJ1xufTtcbiJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7Iiwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./env.js\n");
 
 /***/ }),
 
